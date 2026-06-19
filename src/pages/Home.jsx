@@ -17,6 +17,7 @@ const Home = () => {
   //when user clicks edit edit id goes in this
   const [editid, setEditid] = useState(null)
 
+  const [input,setInput] = useState("")
 
 
   //getting data from localstorage && date
@@ -72,7 +73,8 @@ const formatTime = (time) => {
     setView(true)
   }
 
-  const listItems = sortedTodos.map(item => (
+  const listItems = sortedTodos.filter(item=>  item.todoo.toLowerCase().includes(input.toLowerCase()))
+                              .map(item => (
     <li
       key={item.id}
       className="group flex items-center gap-4 px-5 py-4 rounded-2xl border transition-all duration-200"
@@ -191,18 +193,55 @@ const formatTime = (time) => {
 
         {view && <Task view={view} setView={setView} editid={editid} setEditid={setEditid} />}
 
+        {/* Search bar */}
+        <div className="relative mb-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-400 pointer-events-none"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Search tasks…"
+            className="w-full rounded-xl border border-stone-200 bg-white pl-10 pr-4 py-2.5 text-sm text-stone-800 placeholder-stone-400 outline-none transition-all duration-150 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+          />
+          {input && (
+            <button
+              onClick={() => setInput("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          )}
+        </div>
+
         {data.length === 0 ? (
           <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-stone-300 py-24 text-center bg-white">
             <span className="text-3xl mb-3">📋</span>
             <p className="text-sm font-medium text-stone-500">Nothing scheduled yet</p>
             <p className="mt-1 text-xs text-stone-400">Add a task to start planning your day</p>
           </div>
+        ) : listItems.length === 0 ? (
+          <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-stone-300 py-16 text-center bg-white">
+            <span className="text-2xl mb-3">🔍</span>
+            <p className="text-sm font-medium text-stone-500">No tasks match "{input}"</p>
+            <p className="mt-1 text-xs text-stone-400">Try a different search term</p>
+          </div>
         ) : (
           <ol className="space-y-2">{listItems}</ol>
         )}
-
-        
-
 
       </div>
     </div>
