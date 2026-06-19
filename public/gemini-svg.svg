@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#111827" rx="12" />
+
+  <g transform="translate(40, 35)">
+    <!-- 't' / Checkmark Icon Monogram -->
+    <g id="logo-mark">
+      <!-- Main Stem of the 't' with a bottom hook -->
+      <path d="M 50,40 
+               L 50,105 
+               A 15,15 0 0,0 65,120 
+               L 75,120 
+               A 8,8 0 0,1 75,136 
+               L 65,136 
+               A 31,31 0 0,1 34,105 
+               L 34,40 
+               L 18,40 
+               A 8,8 0 0,1 18,24 
+               L 34,24 
+               L 34,10 
+               A 8,8 0 0,1 50,10 
+               L 50,24 
+               L 65,24 
+               A 8,8 0 0,1 65,40 
+               Z" 
+            fill="#9ec43d" />
+      
+      <!-- The Dynamic Upward Checkmark Stroke -->
+      <path d="M 45,56 
+               L 82,93 
+               A 4,4 0 0,0 85,93 
+               L 138,40 
+               A 6,6 0 0,0 136,30 
+               L 105,30 
+               A 8,8 0 0,0 99,32 
+               L 56,75 
+               Z" 
+            fill="#9ec43d" />
+    </g>
+
+    <!-- Typography: todoo -->
+    <g id="logo-text" transform="translate(165, 92)">
+      <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+            font-size="68" 
+            font-weight="700" 
+            letter-spacing="-0.03em" 
+            fill="#ffffff">
+        todo<tspan font-weight="500" opacity="0.9">o</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
