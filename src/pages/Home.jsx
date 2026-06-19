@@ -4,17 +4,37 @@ import { useDispatch, useSelector } from 'react-redux'
 import { DeleteTodoo, DoneTodoo, getTodoo } from '../redux/slice'
 
 const Home = () => {
+
+
+  //modal view for edit page
   const [view, setView] = useState(false)
+  //state for todoo
   const { data } = useSelector(state => state.Todoo)
   const dispatch = useDispatch()
+  //storing date in this
   const [date, setDate] = useState("")
+  //when user clicks edit edit id goes in this
   const [editid, setEditid] = useState(null)
 
+  //getting data from localstorage && date
   useEffect(() => {
     const todos = localStorage.getItem("todos")
     if (todos) dispatch(getTodoo(JSON.parse(todos)))
     setDate(new Date().toLocaleDateString('en-IN'))
+    if("Notification" in window){
+      requestNotificationPermission()
+    }else{
+      console.log("notification not supported")
+    }
   }, [])
+
+
+  //requesting permission for notification
+  const requestNotificationPermission = async () => {
+  const permission = await Notification.requestPermission();
+};
+
+
 
   const done = data.filter(i => i.done).length
   const total = data.length
@@ -152,6 +172,9 @@ const Home = () => {
         ) : (
           <ol className="space-y-2">{listItems}</ol>
         )}
+
+        
+
 
       </div>
     </div>
