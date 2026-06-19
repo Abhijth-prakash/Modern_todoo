@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AddTodoo, UpdateToddo } from '../redux/slice'
 import { schema } from '../schema/todooSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { scheduleReminder } from "../utils/reminder";
 
 const timeSlots = [
   { label: "6:00 AM", value: "06:00" },
@@ -56,34 +57,19 @@ const Task = ({ setView, editid, setEditid }) => {
       dispatch(UpdateToddo(todo))
       setEditid(null)
       setView(false)
-      testReminder(todo)
+      scheduleReminder(todo)
     } else {
       const todo = { id: Date.now(), ...data }
       dispatch(AddTodoo(todo))
-      testReminder({todo:todo.todoo})
+      scheduleReminder(todo)
       setView(false)
     }
   }
 
 
 
-  //testing how to send notification on time,
-const testReminder = (todo ) => {
-const [hours, minutes] = todo.startTime.split(":").map(Number);
 
-const taskTime = new Date();
-taskTime.setHours(hours, minutes, 0, 0);
 
-const delay = taskTime - new Date();
-
-if (delay > 0) {
-  setTimeout(() => {
-    new Notification("Todo Reminder", {
-      body: todo.todoo,
-    });
-  }, delay);
-}
-};
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.2)', backdropFilter: 'blur(6px)' }}>

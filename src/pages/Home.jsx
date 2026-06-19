@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Task from './Task'
 import { useDispatch, useSelector } from 'react-redux'
 import { DeleteTodoo, DoneTodoo, getTodoo } from '../redux/slice'
+import { scheduleReminder } from "../utils/reminder";
 
 const Home = () => {
 
@@ -16,17 +17,41 @@ const Home = () => {
   //when user clicks edit edit id goes in this
   const [editid, setEditid] = useState(null)
 
+
+
   //getting data from localstorage && date
-  useEffect(() => {
-    const todos = localStorage.getItem("todos")
-    if (todos) dispatch(getTodoo(JSON.parse(todos)))
-    setDate(new Date().toLocaleDateString('en-IN'))
-    if("Notification" in window){
-      requestNotificationPermission()
-    }else{
-      console.log("notification not supported")
-    }
-  }, [])
+
+useEffect(() => {
+  const todos = localStorage.getItem("todos");
+
+  if (todos) {
+    const parsedTodos = JSON.parse(todos);
+
+    dispatch(getTodoo(parsedTodos));
+
+    parsedTodos.forEach((todo) => {
+      if (!todo.done) {
+        scheduleReminder(todo);
+      }
+    });
+  }
+
+  setDate(new Date().toLocaleDateString("en-IN"));
+
+  if ("Notification" in window) {
+    requestNotificationPermission();
+  }
+}, []);
+
+const formatTime = (time) => {
+  let [hours, minutes] = time.split(":").map(Number);
+
+  const period = hours >= 12 ? "PM" : "AM";
+
+  hours = hours % 12 || 12;
+
+  return `${hours}:${minutes.toString().padStart(2, "0")} ${period}`;
+};
 
 
   //requesting permission for notification
@@ -68,9 +93,9 @@ const Home = () => {
         {item.todoo}
       </span>
 
-      <span className="hidden sm:block text-xs text-stone-400 tabular-nums">
-        {item.startTime} – {item.endTime}
-      </span>
+<span className="hidden sm:block text-xs text-stone-400 tabular-nums">
+  {formatTime(item.startTime)} – {formatTime(item.endTime)}
+</span>
 
       {/* Delete — rose/red */}
       <button
