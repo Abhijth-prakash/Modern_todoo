@@ -60,16 +60,19 @@ const formatTime = (time) => {
 };
 
 
-
   const done = data.filter(i => i.done).length
   const total = data.length
-
+  //sorting todos
+  const sortedTodos = [...data].sort((a, b) =>
+  a.startTime.localeCompare(b.startTime)
+);
+  //handling edit function
   const editHandle = (id) => {
     setEditid(id)
     setView(true)
   }
 
-  const listItems = data.map(item => (
+  const listItems = sortedTodos.map(item => (
     <li
       key={item.id}
       className="group flex items-center gap-4 px-5 py-4 rounded-2xl border transition-all duration-200"
