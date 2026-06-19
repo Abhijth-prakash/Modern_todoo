@@ -1,16 +1,98 @@
-# React + Vite
+# 📋 Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive Todo application built with **React**, **Redux Toolkit**, and **Tailwind CSS**. It helps users organize their daily tasks with features like scheduling, browser notifications, search, sorting, and persistent local storage.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Demo
 
-## React Compiler
+> Add your deployed application link here
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Live:** https://your-demo-link.com
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📸 Preview
+
+> Add screenshots or a GIF of your application here.
+
+---
+
+## ✨ Features
+
+- 📝 Add new tasks
+- ✏️ Edit existing tasks
+- 🗑️ Delete tasks
+- ✅ Mark tasks as completed
+- 🔔 Browser notification reminders
+- ⏰ Schedule tasks with start and end times
+- 🔍 Real-time task search
+- 📊 Automatic task sorting by scheduled time
+- 📅 Display today's date
+- 📈 Task completion progress tracker
+- 💾 Local Storage persistence
+- 📱 Fully responsive design
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- React
+- Redux Toolkit
+- Tailwind CSS
+- JavaScript (ES6+)
+
+### Browser APIs
+
+- Notification API
+- Local Storage API
+
+---
+
+
+---
+
+## 📖 How It Works
+
+1. Create a task.
+2. Set a start time and end time.
+3. The task is automatically stored in Local Storage.
+4. A browser notification reminder is scheduled.
+5. Search tasks instantly using the search bar.
+6. Tasks are automatically sorted by time.
+7. Mark tasks as completed to update your progress.
+
+---
+
+## 📚 What I Learned
+
+While building this project, I gained practical experience with:
+
+- React Hooks
+- Redux Toolkit
+- State Management
+- Component Architecture
+- Browser Notification API
+- Local Storage
+- Search & Sorting Logic
+- Responsive Design
+- Modern UI Development
+
+---
+
+## 🔮 Future Improvements
+
+- 🌙 Dark Mode
+- 👤 User Authentication
+- ☁️ Cloud Database Integration
+- 📅 Calendar View
+- ⭐ Task Priorities
+- 🔁 Recurring Tasks
+- 🏷️ Categories & Tags
+- 📱 Progressive Web App (PWA)
+- 🔄 Cloud Sync Across Devices
+
+---
+
