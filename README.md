@@ -12,11 +12,7 @@ A modern and responsive Todo application built with **React**, **Redux Toolkit**
 
 ---
 
-## 📸 Preview
 
-> Add screenshots or a GIF of your application here.
-
----
 
 ## ✨ Features
 
