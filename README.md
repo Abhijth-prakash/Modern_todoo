@@ -8,7 +8,7 @@ A modern and responsive Todo application built with **React**, **Redux Toolkit**
 
 > Add your deployed application link here
 
-**Live:** https://your-demo-link.com
+**Live:** https://modern-todoo.vercel.app/
 
 ---
 
